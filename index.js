@@ -1,8 +1,6 @@
 import { Octokit} from "https://cdn.skypack.dev/octokit";
 
-const octokit = new Octokit({
-    auth: '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'
-})
+const octokit = new Octokit()
 
 const input = document.querySelector('.search__input');
 const autocomplete = document.querySelector('.autocomplete');
@@ -53,15 +51,13 @@ async function updateAutocomplete(value) {
       })
       autocomplete.appendChild(item);
     })
-    console.log(data)
 }
 
 function debounce(f, ms) {
     let timeout;
 
     return function(...args) {
-        const fnCall = () => {f(...args);
-            console.log(args)}
+        const fnCall = () => {f(...args)}
         clearTimeout(timeout)
         timeout = setTimeout(() => fnCall(), ms);
     };
